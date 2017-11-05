@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Browser</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    webview {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body id="browser">
+  <nav id="navigation">
+    <div id="close">
+      <i class="material-icons">close</i>
+    </div>
+    <div id="back">
+      <i class="material-icons">keyboard_arrow_left</i>
+    </div>
+    <div id="forward">
+      <i class="material-icons">keyboard_arrow_right</i>
+    </div>
+    <div id="refresh">
+      <i class="material-icons">refresh</i>
+    </div>
+    <div id="download">
+      <i class="material-icons">file_download</i>
+    </div>
+    <div id="console">
+      <i class="material-icons">code</i>
+    </div>
+    <div id="downloading" class="hidden">
+      <span>Downloading Video - Please Wait...</span>
+      <i class="material-icons">autorenew</i>
+    </div>
+    <div id="finished" class="firstLoad">
+      <i class="material-icons">check</i>
+    </div>
+  </nav>
+  <div id="views">
+    <webview id="view" class="page" src="http://www.youtube.com/" autosize="on"></webview>
+  </div>
+  <script>
+    // You can also require other files to run in this process
+    require('./renderer.js')
+  </script>
+
+</html>
