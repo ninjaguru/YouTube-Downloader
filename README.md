@@ -22,7 +22,11 @@ To the Reddit communities of [/r/Node](https://www.reddit.com/r/node/) and [/r/E
 ## Resources Used
 
 [Node.JS](https://nodejs.org/en/)
+
 [Electron](https://electron.atom.io/)
+
 [NPM: Electron-Forge](https://www.npmjs.com/package/electron-forge)
+
 [node-youtube-dl](https://github.com/przemyslawpluta/node-youtube-dl)
+
 [Material.io Icons](https://material.io/icons/)
