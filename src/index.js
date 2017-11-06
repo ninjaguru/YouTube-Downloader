@@ -1,3 +1,4 @@
+/* Mostly Default Electron-Forge index file */
 import { app, BrowserWindow } from 'electron';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -20,7 +21,7 @@ const createWindow = () => {
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname}/index.html`);
 
-  // AdBlock Plus
+  // AdBlock Plus - Does Not Work
   // BrowserWindow.addExtension('./adblock');
 
   // Open the DevTools.

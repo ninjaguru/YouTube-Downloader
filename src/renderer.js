@@ -1,8 +1,6 @@
+// Imports/Requirements and Variable Assignments
 const remote = require('electron').remote;
 const { app } = require('electron').remote;
-// This file is required by the index.html file and will
-// be executed in the renderer process for that window.
-// All of the Node.js APIs are available in this process.
 const ById = function (id) {
   return document.getElementById(id);
 };
@@ -16,6 +14,7 @@ let back = ById('back'),
   download = ById('download'),
   view = ById('view');
 
+//Menu Bar Functions
 function reloadView() {
   view.reload();
 }
@@ -36,6 +35,7 @@ function handleDevtools() {
   }
 }
 
+// Download YouTube video
 function downloadVideo() {
   const fs = require('fs');
   const youtubedl = require('youtube-dl');
@@ -45,6 +45,7 @@ function downloadVideo() {
       // Additional options can be given for calling `child_process.execFile()`.
       { cwd: __dirname });
 
+  // Triggered when download starts
   video.on('info', (info) => {
       if (document.getElementById('finished').classList.contains('firstLoad')) {
           document.getElementById('finished').classList.remove('firstLoad');
@@ -53,6 +54,7 @@ function downloadVideo() {
     document.getElementById('finished').classList.toggle('hidden');
   });
 
+  // Triggered when download is complete
   video.on('end', () => {
     setTimeout(() => {
       document.getElementById('downloading').classList.toggle('hidden');
@@ -60,14 +62,16 @@ function downloadVideo() {
     }, 2500);
   });
 
+  // Starts download with necessary arguments set
   const url = view.getURL();
   const options = ['--format=best[ext=mp4]'];
   youtubedl.getInfo(url, options, (err, info) => {
     if (err) throw err;
-    video.pipe(fs.createWriteStream(`${`${app.getPath('home')}/Downloads/${info.title}`}.mp4`));
+    video.pipe(fs.createWriteStream(`${`${app.getPath('home')}/Downloads/${info.title}-${info.uploader}`}.mp4`));
   });
 }
 
+// Event Listeners
 refresh.addEventListener('click', reloadView);
 back.addEventListener('click', backView);
 forward.addEventListener('click', forwardView);
